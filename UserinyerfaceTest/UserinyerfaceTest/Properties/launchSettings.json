@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "UserinyerfaceTest": {
+      "commandName": "Project",
+      "workingDirectory": "F:\\VS repo\\TestTask1",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

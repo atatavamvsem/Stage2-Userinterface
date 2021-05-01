@@ -2,6 +2,7 @@ using Aquality.Selenium.Browsers;
 using Aquality.Selenium.Configurations;
 using NUnit.Framework;
 using Resources;
+using System;
 using Userinyerface.Forms.Pages;
 
 namespace UserinyerfaceTests
@@ -13,15 +14,22 @@ namespace UserinyerfaceTests
         public void Setup()
         {
             AqualityServices.Browser.GoTo(Constants.UrlUserinyerface);
-            AqualityServices.Browser.Maximize();
+            //AqualityServices.Browser.Maximize();
         }
 
         [Test]
         public void UserinyerfaceLogination()
         {
             var mainPage = new MainPage();
-            Assert.IsTrue(mainPage.State.IsDisplayed, "Slider Form is not opened");
+            Assert.IsTrue(mainPage.State.IsDisplayed, "It's not main page");
             mainPage.ClickNextButton();
+
+            var infoPage = new InformationPage();
+            AqualityServices.Logger.Info(infoPage.GetNumCard());
+            //Console.WriteLine(infoPage.GetNumCard());
+            infoPage.ClickAcceptButton();
+            
+            AqualityServices.Logger.Info(infoPage.GetNumCard());
         }
 
         [TearDown]
