@@ -25,10 +25,16 @@ namespace UserinyerfaceTests
             mainPage.ClickNextButton();
 
             var infoPage = new InformationPage();
-            AqualityServices.Logger.Info(infoPage.GetNumCard());
-            //Console.WriteLine(infoPage.GetNumCard());
+            Assert.AreEqual("1", infoPage.ParseNumCard());
+
+            infoPage.TypePassword();
+            infoPage.TypeEmail();
+            infoPage.TypeDomain();
+            infoPage.ClickDropdown();
+            infoPage.SelectDotOrg();
             infoPage.ClickAcceptButton();
-            
+            infoPage.ClickNextButton();
+
             AqualityServices.Logger.Info(infoPage.GetNumCard());
         }
 
