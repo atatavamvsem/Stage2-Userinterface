@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Utilities
@@ -45,6 +46,22 @@ namespace Utilities
                 result += englishSymbols[rndGen.Next(englishSymbols.Length)].ToString();
             }
             return result;
+        }
+
+        public static int[] GenerateRandomArrayInt(int length, int maxNumber)
+        {
+            int[] allNumbers = Enumerable.Range(1, maxNumber).ToArray();
+            int[] resultArray = new int[length];
+            for (int i = maxNumber-1; i >= 1; i--)
+{
+                int j = rndGen.Next(i + 1);
+                int temp = allNumbers[j];
+                allNumbers[j] = allNumbers[i];
+                allNumbers[i] = temp;
+            }
+            
+            Array.Copy(allNumbers, 0, resultArray, 0, length);
+            return resultArray;
         }
     }
 }
