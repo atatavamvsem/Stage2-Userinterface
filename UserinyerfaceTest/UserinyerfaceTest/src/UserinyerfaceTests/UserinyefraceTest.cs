@@ -1,8 +1,5 @@
-using Aquality.Selenium.Browsers;
-using Aquality.Selenium.Configurations;
 using NUnit.Framework;
 using Resources;
-using System;
 using Userinyerface.Forms.Pages;
 using UserinyerfaceTest.src.UserinyerfaceTests;
 
@@ -29,7 +26,9 @@ namespace UserinyerfaceTests
 
             infoPage.UnselectAllInterests();
             infoPage.ClickRandomInterests(Constants.needingInterests);
-            //infoPage.UploadClick();
+
+            
+            infoPage.UploadImage();
             infoPage.ClickNextButton();
             Assert.AreEqual("3", infoPage.ParseNumCard(), "Wrong card");
         }
@@ -63,7 +62,7 @@ namespace UserinyerfaceTests
             CheckStartPageAndMoveNext();
 
             var infoPage = new InformationPage();
-            Assert.AreEqual(Constants.startTimer, infoPage.GetTimer());
+            Assert.AreEqual(Constants.startTimer, infoPage.GetTimer(), "Wrong timer start");
         }
 
         private void CheckStartPageAndMoveNext()

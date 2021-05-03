@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading;
 using Aquality.Selenium.Browsers;
 using Aquality.Selenium.Elements.Interfaces;
 using OpenQA.Selenium;
 using Resources;
 using Utilities;
+using AutoItX3Lib;
+using System.Threading;
+using Aquality.Selenium.Configurations;
 
 namespace Userinyerface.Forms.Pages
 { 
@@ -138,27 +139,25 @@ namespace Userinyerface.Forms.Pages
             }
         }
 
-        public void Send()
+        public void UploadImage()
         {
-            string filePath = @"C:\1.png";
-            Avatar.SendKeys(filePath);
-        }
-
-        public void UploadClick()
-        {
-            var browser = AqualityServices.Browser;
-
             Upload.Click();
- 
-            IWebElement a = browser.Driver.SwitchTo().ActiveElement();
-            a.SendKeys("C:\a.png");
-            a.SendKeys("{ENTER}");
+            AutoItX3 autoIt = new AutoItX3();
+
+            /* не знаю как правильно решить момент с названием этой вкладки
+            для открытия файла, решил вынести это в Constants */
+            autoIt.WinActivate(Constants.GetNameDirectory(AqualityServices.Get<IBrowserProfile>().BrowserName.ToString()));
+            //нормально ли в этом счучае останавливать поток? или использовать что-то другое?
+            Thread.Sleep(1000);
+            autoIt.Send(@Constants.imagePath);
+            Thread.Sleep(1000);
+            autoIt.Send("{Enter}");
+            Thread.Sleep(1000);
         }
 
         public String GetTimer()
         {
-            String time = Timer.GetText();
-            return time;
+            return Timer.GetText();
         }
     }
 }

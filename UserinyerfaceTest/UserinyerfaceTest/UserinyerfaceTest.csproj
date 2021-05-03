@@ -23,6 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <COMReference Include="AutoItX3Lib.dll">
+      <Guid>f8937e53-d444-4e71-9275-35b64210cc3b</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Aquality.Selenium" Version="2.7.3" />
     <PackageReference Include="nunit" Version="3.10.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
